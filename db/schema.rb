@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_04_13_220513) do
+ActiveRecord::Schema[7.0].define(version: 2022_04_16_210006) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -30,6 +30,19 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_13_220513) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "meetings", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.date "meeting_date"
+    t.time "meeting_time"
+    t.bigint "country_id"
+    t.bigint "city_id"
+    t.bigint "timezone_id"
+    t.index ["city_id"], name: "index_meetings_on_city_id"
+    t.index ["country_id"], name: "index_meetings_on_country_id"
+    t.index ["timezone_id"], name: "index_meetings_on_timezone_id"
+  end
+
   create_table "timezones", force: :cascade do |t|
     t.string "name"
     t.integer "difference"
@@ -39,4 +52,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_13_220513) do
 
   add_foreign_key "cities", "countries"
   add_foreign_key "cities", "timezones"
+  add_foreign_key "meetings", "cities"
+  add_foreign_key "meetings", "countries"
+  add_foreign_key "meetings", "timezones"
 end

@@ -1,2 +1,0 @@
-class TimeZone < ApplicationRecord
-end
