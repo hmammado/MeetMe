@@ -1,14 +1,11 @@
 <div class="meeting-container">
   <h1>Create your meeting</h1>
-  <%= simple_form_for(@meeting) do |f| %>
+  <%= simple_form_for(@meeting, @city) do |f| %>
   <%= f.input :meeting_date, as: :date, order: [:day, :month, :year] %>
   <%= f.input :meeting_time, as: :date, order: [:day, :month, :year] %>
-  <%= f.input :name %>
-
-  <%= f.input :address,
-              input_html: { data: { geocoder_target: "address" } },
-              wrapper_html: { data: { controller: "geocoder", geocoder_api_key_value: ENV['MAPBOX_API_KEY'] } } %>
-
+  <%= f.fields_for :cities do |city| %>
+       <%= city.text_field :name %>
+       <% end %>
   <%= f.button :submit, class: "btn btn-primary" %>
 <% end %>
 </div>
