@@ -1,4 +1,4 @@
 class Meeting < ApplicationRecord
-
-  accepts_nested_attributes_for :cities, :countries, :timezones
+  has_many :cities
+  accepts_nested_attributes_for :cities
 end
