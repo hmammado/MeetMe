@@ -1,4 +1,4 @@
 class Meeting < ApplicationRecord
-  geocoded_by :city
-  after_validation :geocode, if: :will_save_change_to_city?
+
+  accepts_nested_attributes_for :cities, :countries, :timezones
 end
