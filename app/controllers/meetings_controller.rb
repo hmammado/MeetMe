@@ -9,6 +9,7 @@ class MeetingsController < ApplicationController
 
   def create
     @meeting = Meeting.new(meeting_params)
+    # raise
     if @meeting.save
       redirect_to meeting_path(@meeting)
     else
@@ -18,6 +19,7 @@ class MeetingsController < ApplicationController
 
   def show
     @meeting = Meeting.find(params[:id])
+    @cities = @meeting.cities
   end
 
   private
