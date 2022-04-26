@@ -5,3 +5,9 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+
+country = Country.create!(name: 'Spain')
+timezone = Timezone.create!(name: 'Central European Summer Time', difference: '+2')
+meeting  = Meeting.create!(meeting_time: '12:00', meeting_date: '23/05/2022')
+
+city = City.create!(name: 'Barcelona', country: country, timezone: timezone, meeting: meeting )
