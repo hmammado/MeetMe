@@ -3,9 +3,10 @@
   <%= simple_form_for(@meeting) do |f| %>
   <%= f.input :meeting_date, as: :date, order: [:day, :month, :year] %>
   <%= f.input :meeting_time, as: :time %>
+  <%= f.association :city %>
   <%= f.fields_for :city do |city| %>
         <%= "City name" %>
-        <%= city.text_field :name %>
+        <%= city.input :name  %>
         <% end %>
   <%= f.fields_for :city do |city| %>
         <%= "City name" %>
@@ -14,7 +15,7 @@
   <%= f.fields_for :city do |city| %>
         <%= "City name" %>
         <%= city.text_field :name %>
-        <% end %>
+        <% end %>s
   <%= f.submit "Submit", class: "btn btn-primary" %>
 <% end %>
 </div>
