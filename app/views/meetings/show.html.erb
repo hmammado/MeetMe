@@ -1,4 +1,5 @@
 Hello World
 <% @meeting.cities.each do |city| %>
-<%= "#{city.name}" %>
+<%= city.name %>
 <% end %>
+<%= @meeting.cities %>
