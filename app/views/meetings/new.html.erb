@@ -2,20 +2,9 @@
   <h1>Create your meeting</h1>
   <%= simple_form_for(@meeting) do |f| %>
   <%= f.input :meeting_date, as: :date, order: [:day, :month, :year] %>
-  <%= f.input :meeting_time, as: :time %>
+  <%= f.input :start_time, as: :time %>
+  <%= f.input :end_time, as: :time %>
   <%= f.association :cities %>
-  <%= f.fields_for :city do |city| %>
-        <%= "City name" %>
-        <%= city.text_field :name %>
-        <% end %>
-  <%= f.fields_for :city do |city| %>
-        <%= "City name" %>
-        <%= city.text_field :name %>
-        <% end %>
-  <%= f.fields_for :city do |city| %>
-        <%= "City name" %>
-        <%= city.text_field :name %>
-        <% end %>
   <%= f.submit "Submit", class: "btn btn-primary" %>
 <% end %>
 </div>
