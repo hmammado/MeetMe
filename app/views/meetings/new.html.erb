@@ -3,6 +3,7 @@
   <%= simple_form_for(@meeting) do |f| %>
   <%= f.input :meeting_date, as: :date, order: [:day, :month, :year] %>
   <%= f.input :meeting_time, as: :time %>
+  <%= f.association :cities %>
   <%= f.fields_for :city do |city| %>
         <%= "City name" %>
         <%= city.text_field :name %>

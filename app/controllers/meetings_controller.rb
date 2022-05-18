@@ -9,8 +9,6 @@ class MeetingsController < ApplicationController
 
   def create
     @meeting = Meeting.new(meeting_params)
-    @city = City.create(name: params[city.name])
-    @meeting.city = @city
     # raise
     if @meeting.save
       redirect_to meeting_path(@meeting)
