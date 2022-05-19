@@ -2,7 +2,7 @@ class MeetingsController < ApplicationController
 
   def new
     @meeting = Meeting.new
-    @meeting.cities.build
+    @city = City.find(params[:city_id])
     # @meeting.countries.build
     # @meeting.timezones.build
   end
@@ -19,14 +19,12 @@ class MeetingsController < ApplicationController
 
   def show
     @meeting = Meeting.find(params[:id])
-    @cities = @meeting.cities
-    raise
   end
 
   private
 
   def meeting_params
-    params.require(:meeting).permit(:meeting_date, :meeting_time, cities_attributes: :name)
+    params.require(:meeting).permit(:meeting_date, :start_time, :end_time, cities_attributes: :name)
   end
 
 end
