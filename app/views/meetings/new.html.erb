@@ -1,10 +1,10 @@
 <div class="meeting-container">
   <h1>Create your meeting</h1>
-  <%= simple_form_for(@meeting) do |f| %>
+  <%= simple_form_for (@meeting) do |f| %>
   <%= f.input :meeting_date, as: :date, order: [:day, :month, :year] %>
   <%= f.input :start_time, as: :time %>
   <%= f.input :end_time, as: :time %>
-  <%= f.association :cities %>
+  <%= f.input :city_id, as: :select, collection: @cities, prompt: 'Select city', label: false %>
   <%= f.submit "Submit", class: "btn btn-primary" %>
 <% end %>
 </div>
