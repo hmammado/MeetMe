@@ -5,6 +5,7 @@
   <%= f.input :start_time, as: :time %>
   <%= f.input :end_time, as: :time %>
   <%= f.input :city_id, as: :select, collection: @cities, prompt: 'Select city', label: false %>
+  <%= f.input :city_id, as: :select, collection: @cities, prompt: 'Select city', label: false %>
   <%= f.submit "Submit", class: "btn btn-primary" %>
 <% end %>
 </div>
