@@ -16,17 +16,20 @@ class MeetingsController < ApplicationController
     else
       render :new
     end
+    raise
   end
 
   def show
     @meeting = Meeting.find(params[:id])
-    @city = City.find(@meeting.city_id)
+    # @city = City.find(@meeting.city_id)
+    @city = Meeting.find(params[:city_ids])
+
   end
 
   private
 
   def meeting_params
-    params.require(:meeting).permit(:meeting_date, :start_time, :end_time, :city_id)
+    params.require(:meeting).permit(:meeting_date, :start_time, :end_time, city_ids: [])
   end
 
 end
