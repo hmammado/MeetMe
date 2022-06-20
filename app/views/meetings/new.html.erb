@@ -4,8 +4,10 @@
   <%= f.input :meeting_date, as: :date, order: [:day, :month, :year] %>
   <%= f.input :start_time, as: :time %>
   <%= f.input :end_time, as: :time %>
-  <%= f.input :city_id, as: :select, collection: @cities, prompt: 'Select city', label: false %>
-  <%= f.input :city_id, as: :select, collection: @cities, prompt: 'Select city', label: false %>
+  <%= f.input :host_city, as: :select, collection: @cities, prompt: 'Select city', label: false %>
+  <%= f.input :city_one, as: :select, collection: @cities, prompt: 'Select city', label: false %>
+  <%= f.input :city_two, as: :select, collection: @cities, prompt: 'Select city', label: false %>
+  <%= f.input :city_three, as: :select, collection: @cities, prompt: 'Select city', label: false %>
   <%= f.submit "Submit", class: "btn btn-primary" %>
 <% end %>
 </div>
