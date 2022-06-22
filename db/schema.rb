@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_06_18_215709) do
+ActiveRecord::Schema[7.0].define(version: 2022_06_19_211450) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -36,8 +36,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_18_215709) do
     t.date "meeting_date"
     t.time "end_time"
     t.time "start_time"
-    t.bigint "city_id"
-    t.index ["city_id"], name: "index_meetings_on_city_id"
+    t.string "host_city"
+    t.string "city_one"
+    t.string "city_two"
+    t.string "city_three"
   end
 
   create_table "timezones", force: :cascade do |t|

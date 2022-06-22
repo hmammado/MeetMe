@@ -19,5 +19,3 @@ city1 = City.create!(name: 'Boston', country: country, timezone: timezone)
 city2 = City.create!(name: 'Baku', country: country, timezone: timezone)
 city3 = City.create!(name: 'London', country: country, timezone: timezone)
 city4 = City.create!(name: 'Tokyo', country: country, timezone: timezone)
-
-meeting  = Meeting.create!(start_time: '12:00', end_time: '13:00', meeting_date: '23/05/2022', city_id: city.id)
