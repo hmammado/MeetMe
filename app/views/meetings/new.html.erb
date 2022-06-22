@@ -4,10 +4,31 @@
   <%= f.input :meeting_date, as: :date, order: [:day, :month, :year] %>
   <%= f.input :start_time, as: :time %>
   <%= f.input :end_time, as: :time %>
-  <%= f.input :host_city, as: :select, collection: @cities, prompt: 'Select city', label: false %>
-  <%= f.input :city_one, as: :select, collection: @cities, prompt: 'Select city', label: false %>
-  <%= f.input :city_two, as: :select, collection: @cities, prompt: 'Select city', label: false %>
-  <%= f.input :city_three, as: :select, collection: @cities, prompt: 'Select city', label: false %>
+  <% for city in @cities %>
+  <%= f.input :city, as: :select, collection: @cities, prompt: 'Select city', label: false %>
+  <%= f.input :city as: :select, collection: @cities, prompt: 'Select city', label: false %>
+  <%= f.input :city, as: :select, collection: @cities, prompt: 'Select city', label: false %>
+  <%= f.input :city, as: :select, collection: @cities, prompt: 'Select city', label: false %>
+  <% end %>
   <%= f.submit "Submit", class: "btn btn-primary" %>
 <% end %>
+
+
+<%
+=begin %><%= form_for(@meeting) do |f| %>
+  <p>
+    <%= f.label :cities %><br />
+    <% for city in City.all %>
+      <%= check_box_tag "meeting[city_ids][]", city.id, @meeting.cities.include?(city) %>
+      <%=h city.name %><br />
+    <% end %>
+  </p>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+
 </div>
+<%
+=end %>
