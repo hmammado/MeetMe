@@ -2,6 +2,7 @@ class MeetingsController < ApplicationController
 
   def new
     @meeting = Meeting.new
+    @meeting.city_meetings.build
     # @city = City.find(params[:city_id])
     # @meeting.countries.build
     # @meeting.timezones.build
@@ -10,7 +11,7 @@ class MeetingsController < ApplicationController
   def create
 
     @meeting = Meeting.new(meeting_params)
-    if @meeting.save
+    if @meeting.save!
       redirect_to meeting_path(@meeting)
     else
       render :new
@@ -20,7 +21,6 @@ class MeetingsController < ApplicationController
 
   def show
     @meeting = Meeting.find(params[:id])
-    @city = City.find(@meeting.city_id)
   end
 
   private
