@@ -1,34 +1,12 @@
-<div class="meeting-container">
-  <h1>Create your meeting</h1>
-  <%= simple_form_for (@meeting) do |f| %>
+
+<%= simple_form_for(@meeting) do |f| %>
   <%= f.input :meeting_date, as: :date, order: [:day, :month, :year] %>
   <%= f.input :start_time, as: :time %>
   <%= f.input :end_time, as: :time %>
-  <% for city in @cities %>
-  <%= f.input :city, as: :select, collection: @cities, prompt: 'Select city', label: false %>
-  <%= f.input :city as: :select, collection: @cities, prompt: 'Select city', label: false %>
-  <%= f.input :city, as: :select, collection: @cities, prompt: 'Select city', label: false %>
-  <%= f.input :city, as: :select, collection: @cities, prompt: 'Select city', label: false %>
-  <% end %>
-  <%= f.submit "Submit", class: "btn btn-primary" %>
-<% end %>
-
-
-<%
-=begin %><%= form_for(@meeting) do |f| %>
-  <p>
-    <%= f.label :cities %><br />
-    <% for city in City.all %>
-      <%= check_box_tag "meeting[city_ids][]", city.id, @meeting.cities.include?(city) %>
-      <%=h city.name %><br />
+    <%= f.simple_fields_for :city_meetings do |city_meeting|%>
+    <%= city_meeting.association :city, :as => :select %>
+    <%= city_meeting.association :city, :as => :select %>
+    <%= city_meeting.association :city, :as => :select %>
     <% end %>
-  </p>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  <%= f.button :submit%>
 <% end %>
-
-
-</div>
-<%
-=end %>

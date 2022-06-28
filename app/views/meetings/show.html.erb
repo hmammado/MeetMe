@@ -1,6 +1,10 @@
 Hello World
 
-<%= @host_city%>
+<% @meeting.city_meeting each do |id|%>
+<% raise %>
+  <%= id.city.name %>
+<% end %>
+
 
 
 
